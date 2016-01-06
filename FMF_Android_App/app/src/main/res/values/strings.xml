@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">FMF_Android_App</string>
+    <string name="app_name">Plan Your Trip</string>
+    <string name="add">add</string>
+    <string name="adult">Adult</string>
+    <string name="children">Child</string>
+    <string name="findFlight">Find Flight</string>
+    <string name="from">Colombo, Sri Lanka (CMB)</string>
+    <string name="from_1">From</string>
+    <string name="date_1">sd</string>
+    <string name="date">Departure Date</string>
+    <string name="passengers">1 Adult 0 Children 0 Infant</string>
 </resources>
