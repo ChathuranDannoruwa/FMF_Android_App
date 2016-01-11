@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorYellow">#FFA62F</color>
+    <color name="toolbarColor">#C3EBFF</color>
+    <color name="tab_text">#FFFFFF</color>
+    <color name="bookingWidget">#FFFFFF</color>
+    <color name="tabColor">#3F51B5</color>
+    <color name="buttonColor">#FFFF00</color>
 </resources>

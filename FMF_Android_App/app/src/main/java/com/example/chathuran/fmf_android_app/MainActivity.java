@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         // Set a toolbar which will replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setIcon(R.drawable.fmf_logo);
 
         // Setup the viewPager
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
