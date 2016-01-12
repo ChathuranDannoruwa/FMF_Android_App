@@ -22,12 +22,19 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class BookingWidgetFragment extends Fragment {
@@ -43,26 +50,33 @@ public class BookingWidgetFragment extends Fragment {
         return new BookingWidgetFragment(id);
     }
 
-    String v1,val;
+
     AutoCompleteTextView from_1;
     AutoCompleteTextView to_1;
     AutoCompleteTextView autoText;
-    // EditText to_1;
     EditText date_1;
     EditText date_2;
     EditText passengers;
-    NumberPicker selBChld;
     Button  search_flight_submit;
     JSONObject jsonobject;
     JSONArray jsonarray;
+    String hdn_flt_type="RT";
     ArrayList<String> worldlist;
-    AutoCompleteTextView autocompleteTextView;
+    final String selBCos="y";
+    final String airline="";
+    final String multicity_count ="2";
+    String date1;
+    String date2;
 
+    String url = "https://ibe.findmyfare.lk/search_flight2.php";
 
     public BookingWidgetFragment(int id) {
-        // Required empty public constructor
+
         this.id=id;
     }
+
+    public BookingWidgetFragment()
+    {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,40 +100,97 @@ public class BookingWidgetFragment extends Fragment {
         to_1 = (AutoCompleteTextView) view.findViewById(R.id.to_1_f1);//populate the autocomplete list for to field
         new DownloadJSONForTo().execute();
         if(id == 1){
-
+            hdn_flt_type="OT";
             date_2.setEnabled(false);
-        }else{
-
         }
+
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         c.add(Calendar.DATE, 4);
         String formattedDate = df.format(c.getTime());
         date_1.setText(formattedDate.toString());
+        c.add(Calendar.DATE, 7);
+        formattedDate = df.format(c.getTime());
+        date_2.setText(formattedDate.toString());
 
 
         search_flight_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String from, to, passeng;
-                String date1, date2;
+                final String from, to, passeng;
+
                 int selAdt, selChld, day_1, month_1, year_1, day_2, month_2, year_2;
-
+                date1 = date_1.getText().toString();
                 from =  from_1.getText().toString();
-                if (id == 1) {
-
-
-                } else {
+                if(id == 1){
+                    hdn_flt_type="OT";
+                    date2=" ";
+                }
+                else {
                     date2 = date_2.getText().toString();
                 }
                 to = to_1.getText().toString();
                 passeng = passengers.getText().toString();
-                Toast.makeText(getContext(),from+ to,Toast.LENGTH_LONG).show();
+                String[] separated = passeng.split(" ");
+                final String selBAdt=separated[0];
+                final String selBChld=separated[2];
+                final String selBInf=separated[4];
+
+                CustomJSONObjectRequest jsObjRequest = new CustomJSONObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
 
-            }
+                        try {
+
+                            JSONObject sendResult = new JSONObject((response.toString()));
+                            Log.d("msg", sendResult.toString());
+                            Toast.makeText(getContext(),sendResult.toString(), Toast.LENGTH_SHORT).show();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("from_1",from);
+                        params.put("to_1", to);
+                        params.put("dd", date1);
+                        params.put("rtd",date2);
+                        params.put(" hdn_flt_type", hdn_flt_type);
+                        params.put("selBChld", selBChld);
+                        params.put("selBAdt", selBAdt);
+                        params.put(" selBInf", selBInf);
+                        params.put("airline", airline);
+                        params.put("multicity_count", multicity_count);
+                        params.put("selBCos", selBCos);
+                        params.put("mapp","1");
+                        return params;
+                    }
+
+                };
+
+
+                //jsObjRequest.setShouldCache(false);
+                MyVolleySingleton.getInstance(getContext()).addToRequestQueue(jsObjRequest);
+
+
+
+
+
+    }
         });
 
         date_1.setOnTouchListener(new View.OnTouchListener() {
@@ -306,7 +377,7 @@ public class BookingWidgetFragment extends Fragment {
                 childVal = String.valueOf(child.getValue());
                 infantVal = String.valueOf(infant.getValue());
                 d.dismiss();
-                passengers.setText(adultVal + " Adult " + childVal + " Children " + infantVal + " Infant");
+                passengers.setText(adultVal + " Adult| " + childVal + " Children| " + infantVal + " Infant");
 
 
                 //Toast.makeText(MainActivity.this, v1, Toast.LENGTH_LONG).show();

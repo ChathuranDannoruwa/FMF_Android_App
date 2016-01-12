@@ -34,7 +34,7 @@ public class DatePickerFragment1 extends DialogFragment  implements DatePickerDi
         //Do something with the date chosen by the user
         TextView tv = (TextView) getActivity().findViewById(R.id.date1_f1);
 
-
+          month+=1;
 
         String stringOfDate = day + "/" + month + "/" + year;
         tv.setText(stringOfDate);

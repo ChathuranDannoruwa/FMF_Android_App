@@ -146,7 +146,7 @@
                 android:id="@+id/passengers_f1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="1 Adult 0 Children 0 Infant"
+                android:text="1 Adult| 0 Children| 0 Infant"
                 android:inputType="text"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="false"

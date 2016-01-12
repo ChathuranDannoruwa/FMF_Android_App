@@ -33,4 +33,7 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile project(':httpclient-4.0')
     compile project(':httpcore-4.0')
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    compile 'com.android.support:design:23.1.1'
+
 }

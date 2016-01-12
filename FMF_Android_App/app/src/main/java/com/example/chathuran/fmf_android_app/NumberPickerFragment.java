@@ -53,7 +53,7 @@ public class NumberPickerFragment extends DialogFragment  {
                 childVal = String.valueOf(child.getValue());
                 infantVal = String.valueOf(infant.getValue());
                 Log.v("abc", "2sd");
-                passengers.setText(adultVal + " Adult |" + childVal + " Children |" + infantVal + " Infant");
+                passengers.setText(adultVal + " Adult| " + childVal + " Children| " + infantVal + " Infant");
 
 
                 getDialog().dismiss();
