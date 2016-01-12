@@ -44,16 +44,14 @@ public class BookingWidgetFragment extends Fragment {
      *
      * @return A new instance of fragment BookingWidgetFragment.
      */
-    int id;
-    //Context context= getActivity().getApplicationContext();
-    public static BookingWidgetFragment newInstance(int id) {
+    int id; //variabl eto indiacte one way or roound trip
+     public static BookingWidgetFragment newInstance(int id) {
         return new BookingWidgetFragment(id);
     }
 
 
     AutoCompleteTextView from_1;
     AutoCompleteTextView to_1;
-    AutoCompleteTextView autoText;
     EditText date_1;
     EditText date_2;
     EditText passengers;
@@ -104,7 +102,7 @@ public class BookingWidgetFragment extends Fragment {
             date_2.setEnabled(false);
         }
 
-
+       //to set the date
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         c.add(Calendar.DATE, 4);
@@ -114,14 +112,13 @@ public class BookingWidgetFragment extends Fragment {
         formattedDate = df.format(c.getTime());
         date_2.setText(formattedDate.toString());
 
-
+ //on click action of search button
         search_flight_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final String from, to, passeng;
 
-                int selAdt, selChld, day_1, month_1, year_1, day_2, month_2, year_2;
                 date1 = date_1.getText().toString();
                 from =  from_1.getText().toString();
                 if(id == 1){
@@ -137,7 +134,7 @@ public class BookingWidgetFragment extends Fragment {
                 final String selBAdt=separated[0];
                 final String selBChld=separated[2];
                 final String selBInf=separated[4];
-
+                 //make a JSON request through Volley and get the response
                 CustomJSONObjectRequest jsObjRequest = new CustomJSONObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -183,8 +180,7 @@ public class BookingWidgetFragment extends Fragment {
                 };
 
 
-                //jsObjRequest.setShouldCache(false);
-                MyVolleySingleton.getInstance(getContext()).addToRequestQueue(jsObjRequest);
+                 MyVolleySingleton.getInstance(getContext()).addToRequestQueue(jsObjRequest);
 
 
 
@@ -312,14 +308,11 @@ public class BookingWidgetFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            // Locate the WorldPopulation Class
-            //    world = new ArrayList<WorldPopulation>();
-            // Create an array to populate the spinner
+            // Create an array to populate the list
             worldlist = new ArrayList<String>();
             // JSON file URL address
             jsonarray = JSONFunctions
                     .getJSONfromURL("https://www.findmyfare.com/citiezz.json");
-            //    Toast.makeText(getApplicationContext(),jsonobject.toString(), Toast.LENGTH_SHORT).show();
             try {
                 // Locate the NodeList name
                 jsonobject = jsonarray.getJSONObject(0);
