@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dialogId">
+
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        >
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/adult"
+                android:id="@+id/txtAdult"
+                android:layout_column="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/children"
+                android:id="@+id/txtChildren"
+                android:layout_column="2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Infant"
+                android:id="@+id/txtInfant"
+                android:layout_column="3" />
+
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <NumberPicker
+                android:id="@+id/adult"
+                android:layout_width="81dp"
+                android:layout_height="118dp"
+
+                android:layout_column="1"
+                />
+
+            <NumberPicker
+                android:id="@+id/children"
+                android:layout_width="81dp"
+                android:layout_height="118dp"
+
+                android:layout_column="2"
+                />
+
+            <NumberPicker
+                android:id="@+id/infant"
+                android:layout_width="81dp"
+                android:layout_height="118dp"
+
+                android:layout_column="3"
+                />
+
+
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:id="@+id/add"
+
+        android:layout_gravity="center_horizontal" />
+
+
+
+</LinearLayout>

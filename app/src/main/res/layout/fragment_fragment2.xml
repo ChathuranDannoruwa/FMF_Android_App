@@ -1,0 +1,202 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tabstutorial.Fragment1">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/from1_layout"
+                android:layout_width="452dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="left">
+
+                <AutoCompleteTextView
+                    android:id="@+id/from_1_f1"
+                    android:layout_width="fill_parent"
+                    android:layout_gravity="left"
+                    android:text="Colombo, Sri Lanka (CMB)"
+
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:layout_alignParentEnd="true"
+                    android:layout_row="10"
+                    android:layout_column="3"
+                    android:hint="From"
+                    android:drawableLeft="@drawable/to"
+                    />
+
+
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/to_1_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="right"
+                android:layout_weight="0.5">
+
+                <AutoCompleteTextView
+                    android:id="@+id/to_1_f1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text=""
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentStart="false"
+                    android:layout_row="10"
+                    android:layout_column="3"
+                    android:hint="To"
+                    android:drawableLeft="@drawable/to"
+                    />
+
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/date1_layout"
+                android:layout_width="148dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="left"
+                android:layout_weight="0.34">
+
+                <EditText
+                    android:id="@+id/date1_f2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="sd"
+                    android:layout_alignParentEnd="true"
+                    android:editable="false"
+                    android:layout_row="10"
+                    android:layout_column="3"
+                    android:hint="Departure Date"
+                    android:drawableLeft="@drawable/calendar"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/date2_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="right"
+                android:layout_weight="0.5">
+
+                <EditText
+                    android:id="@+id/date2_f2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentStart="false"
+                    android:layout_row="10"
+                    android:layout_column="3"
+                    android:hint="Return Date"
+                    android:drawableLeft="@drawable/calendar"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
+        </LinearLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/passengers_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <EditText
+
+                android:id="@+id/passengers_f2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:inputType="text"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+
+                android:editable="false"
+                android:layout_row="10"
+                android:layout_column="3"
+                android:hint="Traveller"
+                android:drawableLeft="@drawable/traveller"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/findFlight_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find Flight"
+                android:id="@+id/search_flight_submit_f1"
+                android:background="@color/colorYellow"
+                android:layout_column="8"
+                android:drawableRight="@drawable/search"
+                android:layout_gravity="right"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <EditText
+
+            android:id="@+id/hidden_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="1 Adult| 0 Children| 0 Infant"
+            android:inputType="text"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="false"
+            android:visibility="invisible"
+
+            />
+
+
+
+
+
+    </LinearLayout>
+</FrameLayout>
